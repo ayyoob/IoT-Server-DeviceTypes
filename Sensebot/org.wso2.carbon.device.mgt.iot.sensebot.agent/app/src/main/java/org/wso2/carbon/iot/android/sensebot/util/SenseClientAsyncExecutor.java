@@ -146,6 +146,8 @@ public class SenseClientAsyncExecutor extends AsyncTask<String, Void, Map<String
             if (accessTokenInfo != null) {
                 LocalRegistry.addAccessToken(context, accessTokenInfo.getAccess_token());
                 LocalRegistry.addRefreshToken(context, accessTokenInfo.getRefresh_token());
+                LocalRegistry.addClientId(context, oAuthApplicationInfo.getClient_id());
+                LocalRegistry.addClientSecret(context, oAuthApplicationInfo.getClient_secret());
                 Set<String> deviceIds = new HashSet<String>(Arrays.asList(devices));
                 LocalRegistry.addDeviceId(context, deviceIds);
             }
