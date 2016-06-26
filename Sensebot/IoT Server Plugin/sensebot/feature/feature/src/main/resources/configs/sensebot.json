@@ -1,0 +1,20 @@
+{
+  "deviceType": {
+    "label": "sensebot",
+    "category": "virtual",
+    "downloadAgentUri": "sensebot/enrollment/devices/download"
+  },
+  "analyticStreams": [
+    {
+      "name": "Temperature",
+      "table": "DEVICE_sensebot_temperature_SUMMARY",
+      "ui_unit": {
+        "name": "cdmf.unit.analytics.line-chart",
+        "data":[
+          {"column": {"name":"TIME", "label":"time", "ui-mapping":"x-axis"}},
+          {"column": {"name":"temperature", "label":"temperature", "ui-mapping":"y-axis"}}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+
+{
+  "deviceType": {
+    "label": "sensebot",
+    "category": "virtual",
+    "downloadAgentUri": "sensebot/device/download"
+  }
+}
