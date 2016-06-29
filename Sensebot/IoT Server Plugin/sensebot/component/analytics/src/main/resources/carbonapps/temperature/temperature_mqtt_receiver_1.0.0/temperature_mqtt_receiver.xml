@@ -16,7 +16,7 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-<eventReceiver name="temperature-mqtt" statistics="disable" trace="disable" xmlns="http://wso2.org/carbon/eventreceiver">
+<eventReceiver name="sensebot-mqtt" statistics="disable" trace="disable" xmlns="http://wso2.org/carbon/eventreceiver">
     <from eventAdapterType="oauth-mqtt">
         <property name="topic">carbon.super/sensebot/+/temperature</property>
         <property name="username">admin</property>
@@ -28,5 +28,5 @@
         <property name="cleanSession">true</property>
     </from>
     <mapping customMapping="disable" type="json"/>
-    <to streamName="org.wso2.iot.devices.temperature" version="1.0.0"/>
+    <to streamName="org.wso2.iot.sensebot" version="1.0.0"/>
 </eventReceiver>

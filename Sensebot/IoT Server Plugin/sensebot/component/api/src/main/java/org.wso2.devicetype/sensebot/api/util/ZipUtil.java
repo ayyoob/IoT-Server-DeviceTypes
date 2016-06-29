@@ -65,6 +65,10 @@ public class ZipUtil {
                 mqttEndpoint = mqttEndpoint.replace(LOCALHOST, iotServerIP);
             }
 
+            String[] mqttEPParams = mqttEndpoint.split(":");
+            String mqttEPIP = mqttEPParams[1].replace("//", "");
+            String mqttPort = mqttEPParams[2];
+
             Map<String, String> contextParams = new HashMap<>();
             contextParams.put("SERVER_NAME", APIUtil.getTenantDomainOftheUser());
             contextParams.put("DEVICE_OWNER", owner);
@@ -73,7 +77,8 @@ public class ZipUtil {
             contextParams.put("HTTPS_EP", httpsServerEP);
             contextParams.put("HTTP_EP", httpServerEP);
             contextParams.put("APIM_EP", apimEndpoint);
-            contextParams.put("MQTT_EP", mqttEndpoint);
+            contextParams.put("MQTT_EP", mqttEPIP);
+            contextParams.put("MQTT_PORT", mqttPort);
             contextParams.put("DEVICE_TOKEN", token);
             contextParams.put("DEVICE_REFRESH_TOKEN", refreshToken);
 

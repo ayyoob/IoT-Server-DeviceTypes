@@ -20,9 +20,11 @@
 <artifacts>
     <artifact name="temperature_CAPP" version="1.0.0" type="carbon/application">
         <dependency artifact="temperature_stream" version="1.0.0" include="true" serverRole="DataAnalyticsServer"/>
-		<dependency artifact="temperature_store" version="1.0.0" include="true" serverRole="DataAnalyticsServer"/>
+		    <dependency artifact="temperature_store" version="1.0.0" include="true" serverRole="DataAnalyticsServer"/>
         <dependency artifact="temperature_mqtt_receiver" version="1.0.0" include="true" serverRole="DataAnalyticsServer"/>
         <dependency artifact="temperature_publisher" version="1.0.0" include="true" serverRole="DataAnalyticsServer"/>
         <dependency artifact="temperature_spark_script" version="1.0.0" include="true" serverRole="DataAnalyticsServer"/>
+        <dependency artifact="sensebot_stream" version="1.0.0" include="true" serverRole="DataAnalyticsServer"/>
+        <dependency artifact="sensebot_execution" version="1.0.0" include="true" serverRole="DataAnalyticsServer"/>
     </artifact>
 </artifacts>

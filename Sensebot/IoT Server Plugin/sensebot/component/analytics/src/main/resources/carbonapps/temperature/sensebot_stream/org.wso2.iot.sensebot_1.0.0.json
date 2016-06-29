@@ -1,0 +1,15 @@
+{
+  "name": "org.wso2.iot.sensebot",
+  "version": "1.0.0",
+  "nickName": "Sensebot",
+  "description": "Temperature data received from the Sensebot",
+  "metaData": [
+    {"name":"owner","type":"STRING"},
+    {"name":"deviceId","type":"STRING"}
+  ],
+  "payloadData": [
+    {
+      "name": "temperature","type": "FLOAT"
+    }
+  ]
+}
