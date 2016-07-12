@@ -36,7 +36,7 @@ public class SenseService extends Service {
     public static Context context;
     private static LocationListener listener;
     // The minimum distance to change Updates in meters
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 3; // 10 meters
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; // 10 meters
 
     // The minimum time between updates in milliseconds
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
