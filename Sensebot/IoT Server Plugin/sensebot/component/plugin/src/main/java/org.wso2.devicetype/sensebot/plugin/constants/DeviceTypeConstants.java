@@ -37,8 +37,8 @@ public class DeviceTypeConstants {
     public final static String STOP = "stop";
 
     //sensor events summerized table name
-    public static final String SENSOR_TYPE1_EVENT_TABLE = "ORG_WSO2_IOT_DEVICES_temperature";
-    public static final String SENSOR_TYPE2_EVENT_TABLE = "ORG_WSO2_IOT_DEVICES_sonar";
+    public static final String SENSOR_TYPE1_EVENT_TABLE = "DEVICE_TEMPERATURE_SUMMARY";
+    public static final String SENSOR_TYPE2_EVENT_TABLE = "DEVICE_SONAR_SUMMARY";
     public final static String DEVICE_TYPE_PROVIDER_DOMAIN = "carbon.super";
     public final static String SENSOR_TYPE1 = "temperature";
     public final static String SENSOR_TYPE2 = "sonar";

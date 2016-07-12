@@ -149,11 +149,12 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
                                    @QueryParam("to") long to, @QueryParam("sensorType") String sensorType) {
         String fromDate = String.valueOf(from);
         String toDate = String.valueOf(to);
-        String query = "meta_deviceId:" + deviceId + " AND meta_deviceType:" +
-                DeviceTypeConstants.DEVICE_TYPE + " AND meta_time : [" + fromDate + " TO " + toDate + "]";
+        String query = "deviceId:" + deviceId + " AND deviceType:" +
+                DeviceTypeConstants.DEVICE_TYPE + " AND time : [" + fromDate + " TO " + toDate + "]";
         String sensorTableName = null;
         if(sensorType.equals(DeviceTypeConstants.SENSOR_TYPE1)){
-            sensorTableName = DeviceTypeConstants.SENSOR_TYPE1_EVENT_TABLE;
+//            sensorTableName = DeviceTypeConstants.SENSOR_TYPE1_EVENT_TABLE;
+            sensorTableName = "DEVICE_TEMPERATURE_SUMMARY";
         }else if(sensorType.equals(DeviceTypeConstants.SENSOR_TYPE2)){
             sensorTableName = DeviceTypeConstants.SENSOR_TYPE2_EVENT_TABLE;
         }
@@ -164,7 +165,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
             }
             if (sensorTableName != null) {
                 List<SortByField> sortByFields = new ArrayList<>();
-                SortByField sortByField = new SortByField("meta_time", SORT.ASC, false);
+                SortByField sortByField = new SortByField("time", SORT.ASC, false);
                 sortByFields.add(sortByField);
                 List<SensorRecord> sensorRecords = APIUtil.getAllEventsForDevice(sensorTableName, query, sortByFields);
                 return Response.status(Response.Status.OK.getStatusCode()).entity(sensorRecords).build();
@@ -202,7 +203,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
             String[] devices = sensebotDevices.toArray(new String[]{});
             return Response.ok().entity(devices).build();
         } catch (DeviceManagementException e) {
-            log.error(e.getErrorMessage(), e);
+            log.error(e.getMessage(), e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).build();
         }
     }

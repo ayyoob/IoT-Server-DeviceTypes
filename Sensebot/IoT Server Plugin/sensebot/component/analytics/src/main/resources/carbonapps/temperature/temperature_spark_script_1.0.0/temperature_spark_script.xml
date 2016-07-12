@@ -19,10 +19,10 @@
 
 <Analytics>
   <Name>temperature_spark_script</Name>
-  <Script>
-    CREATE TEMPORARY TABLE DevicetemperatureData USING CarbonAnalytics OPTIONS(tableName "ORG_WSO2_IOT_DEVICES_temperature");
-    CREATE TEMPORARY TABLE DevicetemperatureSummaryData USING CarbonAnalytics OPTIONS (tableName "DEVICE_temperature_SUMMARY", schema "temperature FLOAT, deviceType STRING -i, deviceId STRING -i, owner STRING -i, time LONG -i",primaryKeys "deviceType, deviceId, owner, time");
-    insert overwrite table DevicetemperatureSummaryData select temperature, meta_deviceType as deviceType, meta_deviceId as deviceId, meta_owner as owner, cast(meta_time/1000 as BIGINT)as time from DevicetemperatureData group by temperature, meta_deviceType, meta_deviceId, meta_owner, cast(meta_time/1000 as BIGINT);
-  </Script>
+    <Script>
+      CREATE TEMPORARY TABLE DevicetemperatureData USING CarbonAnalytics OPTIONS(tableName "ORG_WSO2_IOT_DEVICES_temperature");
+      CREATE TEMPORARY TABLE DevicetemperatureSummaryData USING CarbonAnalytics OPTIONS (tableName "DEVICE_temperature_SUMMARY", schema "temperature FLOAT, deviceType STRING -i, deviceId STRING -i, owner STRING -i, time LONG -i, _timestamp LONG -i",primaryKeys "deviceType, deviceId, owner, time");
+      insert into table DevicetemperatureSummaryData select temperature, meta_deviceType as deviceType, meta_deviceId as deviceId, meta_owner as owner, cast(meta_time/1000 as BIGINT)as time, (cast(meta_time/1000 as BIGINT)*1000) as _timestamp from DevicetemperatureData group by temperature, meta_deviceType, meta_deviceId, meta_owner, cast(meta_time/1000 as BIGINT);
+    </Script>
   <CronExpression>0 * * * * ?</CronExpression>
 </Analytics>

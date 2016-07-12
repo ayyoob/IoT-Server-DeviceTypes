@@ -17,12 +17,12 @@ gpio.mode(leftMotorReverse, gpio.LOW)
 gpio.mode(rightMotorReverse, gpio.LOW)
 
 client_connected = false
-accessToken = "${DEVICE_TOKEN}";
-refreshToken = "${DEVICE_REFRESH_TOKEN}";
-deviceId = "${DEVICE_ID}"
+accessToken = ${DEVICE_TOKEN};
+refreshToken = ${DEVICE_REFRESH_TOKEN};
+deviceId = ${DEVICE_ID}
 publishTopic = "carbon.super/sensebot/${DEVICE_ID}/temperature" 
 subscribeTopic = "carbon.super/sensebot/${DEVICE_ID}/command"
-mqttIp = "${MQTT_EP}"
+mqttIp = ${MQTT_EP}
 mqttPort = ${MQTT_PORT}
 
 m = mqtt.Client(deviceId, 120, accessToken, "")
@@ -87,9 +87,6 @@ function subscribeToMQTTQueue()
             gpio.write(rightMotorForward, gpio.HIGH)
             gpio.write(leftMotorReverse, gpio.LOW)
             gpio.write(rightMotorReverse, gpio.LOW)
-            tmr.alarm(0, 200, 0, function()
-                gpio.write(rightMotorForward, gpio.LOW)
-            end)
         end
 
         if message == "right" then
@@ -97,9 +94,6 @@ function subscribeToMQTTQueue()
             gpio.write(rightMotorForward, gpio.LOW)
             gpio.write(leftMotorReverse, gpio.LOW)
             gpio.write(rightMotorReverse, gpio.LOW)
-            tmr.alarm(0, 200, 0, function()
-                gpio.write(leftMotorForward, gpio.LOW)
-            end)
         end
 
         if message == "stop" then
