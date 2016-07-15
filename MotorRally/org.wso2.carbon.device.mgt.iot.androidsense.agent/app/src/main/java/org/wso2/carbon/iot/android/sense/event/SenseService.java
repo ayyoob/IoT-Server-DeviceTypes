@@ -39,7 +39,7 @@ public class SenseService extends Service {
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; // 10 meters
 
     // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
+    private static final long MIN_TIME_BW_UPDATES = 0; // 1 minute
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -62,8 +62,8 @@ public class SenseService extends Service {
         if (!isGPSEnabled && !isNetworkEnabled) {
             // no network provider is enabled
         } else {
-            //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES,
-            //        MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES,
+                    MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES,
                     MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
         }

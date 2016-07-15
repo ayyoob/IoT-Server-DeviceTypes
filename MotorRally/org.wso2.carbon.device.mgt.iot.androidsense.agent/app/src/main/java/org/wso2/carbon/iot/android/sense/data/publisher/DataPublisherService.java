@@ -65,6 +65,7 @@ public class DataPublisherService extends Service {
             public void run() {
                 try {
                     List<Event> events = new ArrayList<>();
+                    List<LocationData> locationDataForDB = new ArrayList<>();
                     //retrieve location data.
                     List<LocationData> locationDataMap = SenseDataHolder.getLocationDataHolder();
 
@@ -74,10 +75,20 @@ public class DataPublisherService extends Service {
                             event.setTimestamp(locationData.getTimeStamp());
                             event.setGps(new double[]{locationData.getLatitude(), locationData.getLongitude()});
                             events.add(event);
+
+                            LocationData data = new LocationData();
+                            data.setLatitude(locationData.getLatitude());
+                            data.setLongitude(locationData.getLongitude());
+                            data.setTimeStamp(locationData.getTimeStamp());
+                            locationDataForDB.add(locationData);
                         }
                      }
                     SenseDataHolder.resetLocationDataHolder();
 
+                    if (locationDataForDB.size() > 0) {
+                        DBWriter dbW=new DBWriter(context);
+                        dbW.insertData(locationDataForDB);
+                    }
                     //publish the data
                     if (events.size() > 0 && LocalRegistry.isEnrolled(context)) {
                         String user = LocalRegistry.getUsername(context);

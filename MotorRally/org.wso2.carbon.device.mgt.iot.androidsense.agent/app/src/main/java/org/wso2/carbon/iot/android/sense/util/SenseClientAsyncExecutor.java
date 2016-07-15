@@ -143,7 +143,8 @@ public class SenseClientAsyncExecutor extends AsyncTask<String, Void, Map<String
             if (androidConfiguration != null) {
                 LocalRegistry.addAccessToken(context, accessTokenInfo.getAccess_token());
                 LocalRegistry.addRefreshToken(context, accessTokenInfo.getRefresh_token());
-                LocalRegistry.addMqttEndpoint(context, androidConfiguration.getMqttEndpoint());
+                //LocalRegistry.addMqttEndpoint(context, androidConfiguration.getMqttEndpoint());
+                LocalRegistry.addMqttEndpoint(context, "tcp://204.232.188.215:1883");
                 LocalRegistry.addTenantDomain(context, androidConfiguration.getTenantDomain());
             }
             return responseMap;

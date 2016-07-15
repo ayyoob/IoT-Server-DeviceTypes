@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import org.wso2.carbon.iot.android.sense.data.publisher.DBWriter;
 import org.wso2.carbon.iot.android.sense.data.publisher.DataPublisherService;
 import org.wso2.carbon.iot.android.sense.event.SenseService;
 import org.wso2.carbon.iot.android.sense.util.LocalRegistry;
@@ -25,6 +26,7 @@ public class LogOut extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        DBWriter dbWriter = new DBWriter(this);
         if (!isMyServiceRunning(SenseService.class)) {
             Intent locationIntent = new Intent(getApplicationContext(), SenseService.class);
             startService(locationIntent);

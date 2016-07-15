@@ -13,6 +13,8 @@
  */
 package org.wso2.carbon.iot.android.sense.event.streams.Location;
 
+import org.wso2.carbon.iot.android.sense.data.publisher.Attributes;
+
 import java.util.Date;
 
 /**
@@ -21,12 +23,17 @@ import java.util.Date;
 public class LocationData {
     private double latitude; // latitude
     private double longitude; // longitude
+    @Attributes(primaryKey = true)
     private long timestamp;
 
-    LocationData(double latitude, double longitude) {
+    public LocationData(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
         timestamp = new Date().getTime();
+
+    }
+
+    public LocationData() {
 
     }
 

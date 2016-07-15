@@ -48,13 +48,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </receiver>
-
-
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
         <activity android:name="org.wso2.carbon.iot.android.sense.LogOut">
         </activity>
     </application>
